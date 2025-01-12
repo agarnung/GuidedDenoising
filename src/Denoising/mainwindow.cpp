@@ -29,7 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QHBoxLayout *layout_main = new QHBoxLayout;
     layout_main->addLayout(layout_left_);
-    layout_main->addWidget(opengl_viewer_);
+    viewer_container = QWidget::createWindowContainer(opengl_viewer_, this);
+    layout_main->addWidget(viewer_container);
     layout_main->setStretch(1,1);
     this->centralWidget()->setLayout(layout_main);
 }
@@ -57,7 +58,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::init()
 {
-    opengl_viewer_ = new GLViewer(this);
+    opengl_viewer_ = new GLViewer();
     data_manager_ = new DataManager();
     parameter_set_ = new ParameterSet();
     parameter_set_widget_ = NULL;
@@ -274,21 +275,21 @@ void MainWindow::TransToNoisyMesh()
 {
     data_manager_->MeshToNoisyMesh();
     opengl_viewer_->resetMesh(data_manager_->getMesh());
-    opengl_viewer_->updateGL();
+    opengl_viewer_->update();
 }
 
 void MainWindow::TransToOriginalMesh()
 {
     data_manager_->MeshToOriginalMesh();
     opengl_viewer_->resetMesh(data_manager_->getMesh());
-    opengl_viewer_->updateGL();
+    opengl_viewer_->update();
 }
 
 void MainWindow::TransToDenoisedMesh()
 {
     data_manager_->MeshToDenoisedMesh();
     opengl_viewer_->resetMesh(data_manager_->getMesh());
-    opengl_viewer_->updateGL();
+    opengl_viewer_->update();
 }
 
 void MainWindow::ClearMesh()
@@ -296,7 +297,7 @@ void MainWindow::ClearMesh()
     CloseWidget();
     data_manager_->ClearMesh();
     opengl_viewer_->resetMesh(data_manager_->getMesh());
-    opengl_viewer_->updateGL();
+    opengl_viewer_->update();
     SetActionStatus(false);
     action_import_mesh_->setEnabled(true);
 }
@@ -369,7 +370,7 @@ void MainWindow::setActionAndWidget(bool value1, bool value2)
 void MainWindow::needToUpdateGL(bool value)
 {
     opengl_viewer_->resetMesh(data_manager_->getMesh(), value);
-    opengl_viewer_->updateGL();
+    opengl_viewer_->update();
 }
 
 void MainWindow::About()

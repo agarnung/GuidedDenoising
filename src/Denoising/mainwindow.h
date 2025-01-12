@@ -97,6 +97,7 @@ private:
 private:
     // glviewer
     GLViewer *opengl_viewer_;
+    QWidget *viewer_container;
     // datamanager
     DataManager *data_manager_;
     // parameter set

@@ -181,7 +181,7 @@ void GLExaminer::mouseReleaseEvent(QMouseEvent* event)
 
 void GLExaminer::wheelEvent(QWheelEvent *event)
 {
-    float dx = event->delta() * 0.5;
+    float dx = event->angleDelta().y() * 0.5f;
     zoom(dx);
 }
 
