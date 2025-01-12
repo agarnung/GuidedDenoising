@@ -14,8 +14,7 @@ It also implements the denoising methods from the following papers for compariso
 
 The code has been tested on the following platforms:
 
-* Windows 10 with Qt 5.11.2, Qt Creator 4.7.1, and MSVC 2017 Community Edition (older versions of MSVC may not work);
-* Debian Buster with Qt 5.11.1, Qt Creator 4.6.2, and GCC 8.2.0.
+* Pop!_OS 22.04 LTS with Qt 6.8.1, Qt Creator 15.0.0 and GCC 11.4.0.
 
 ### Compiling the source code:
 
