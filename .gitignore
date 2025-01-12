@@ -1,0 +1,29 @@
+# Compiled source 
+*.o
+/build/*
+
+# Executables
+*
+!*.*
+!*/
+
+/*.pro.user
+
+*.idx
+
+*.qmake.stash
+
+# C++ objects and libs
+*.o
+*.so
+*.so.*
+*.a
+
+# Qt
+*.pro.user
+*.pro.user.*
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+.qtc_clangd*
